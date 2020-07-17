@@ -51,7 +51,6 @@ public class Scanner implements IScanner {
         resultReceipt.put("totalPrice", "Total Price: " + calculateTotalPrice() + ";");
 
         return resultReceipt;
-
     }
 
     @Override
