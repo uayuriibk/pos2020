@@ -7,8 +7,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scanner implements IScanner {
 
@@ -36,7 +38,20 @@ public class Scanner implements IScanner {
 
     @Override
     public Map<String, String> getReceipt() {
-        return null;
+        Map<String, String> resultReceipt = new HashMap<>();
+        StringBuffer receiptBuffer = new StringBuffer();
+        AtomicInteger itemNumber = new AtomicInteger(0);
+
+        shoppingCart.stream().forEach((code) -> {
+            receiptBuffer.append(itemNumber.incrementAndGet() + ", " + productsInfoDB.getProductTitle(code) +
+                    ", price: " + productsInfoDB.getProductPriceByCode(code).getValue() + ";");
+        });
+
+        resultReceipt.put("boughtProducts", receiptBuffer.toString());
+        resultReceipt.put("totalPrice", "Total Price: " + calculateTotalPrice() + ";");
+
+        return resultReceipt;
+
     }
 
     @Override
