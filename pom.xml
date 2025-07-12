@@ -10,7 +10,7 @@
 
     <properties>
         <lombokVersion>1.18.12</lombokVersion>
-        <commonsLang3Version>3.1</commonsLang3Version>
+        <commonsLang3Version>3.18.0</commonsLang3Version>
         <junitVersion>5.6.2</junitVersion>
         <junitPlatformRunnerVersion>1.6.2</junitPlatformRunnerVersion>
     </properties>
